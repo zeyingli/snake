@@ -23,4 +23,24 @@ public class Node {
         return y;
     }
     
+    @Override
+    public boolean equals(Object n)
+    {
+        Node t;
+        if (n instanceof Node)
+        {
+            t = (Node) n;
+            if (t.getX() == this.getX() && t.getY() == this.getY())
+            {
+                return true;
+            }
+        }
+        return false; 
+    }
+    
+    @Override
+    public String toString()
+    {
+        return String.valueOf(x) + ' ' + String.valueOf(y);
+    }
 }
