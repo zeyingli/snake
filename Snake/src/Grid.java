@@ -27,6 +27,26 @@ public class Grid
        
     }
     
+    private Snake initializeSnake()
+    {
+        snake = new Snake();
+        
+        // Set body
+        int x, y;
+        x = width / 2;
+        y = height / 2;
+        
+        for (int i = 0; i < 5; i++)
+        {
+            snake.addTail(new Node(x, y));
+            x = x + Settings.DEFAULT_NODE_SIZE;
+        }
+        
+        // Update Status
+        return snake;
+    }
+
+    
 
 
 }
