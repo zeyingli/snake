@@ -64,5 +64,28 @@ public class Grid
         return food;
     }
 
+  public Snake getSnake()
+  {
+      return this.snake;
+  }
+  
+  public Node getFood()
+  {
+      return this.food;
+  }
+  
+  public int getWidth()
+  {
+      return this.width;
+  }
 
+  public int getHeight()
+  {
+      return this.height;
+  }
+  
+  public void changeDirection(Direction d)
+  {
+      this.snakeDirection = d;
+  }
 }
