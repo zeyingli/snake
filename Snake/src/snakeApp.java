@@ -3,9 +3,12 @@
  * @author GR10: Zeying, Tiancheng, Cheng, Jingyi
  */
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ContainerListener;
+import java.awt.event.KeyListener;
+
 import javax.swing.*;
+
 public class snakeApp {
 
     public void init(){
@@ -15,6 +18,8 @@ public class snakeApp {
         SnakeView snakeView = new SnakeView(myGrid);
         snakeView.init();
         
+        GameController snakeController = new GameController(myGrid);
+        
         window.setPreferredSize(new Dimension(500,500));
         
         window.add(snakeView.getCanvas(), BorderLayout.CENTER);
@@ -22,6 +27,9 @@ public class snakeApp {
         snakeView.draw();
         
         window.setResizable(false);
+        
+        window.addKeyListener((KeyListener)snakeController);
+        new Thread(snakeController).start();
             
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -31,8 +39,8 @@ public class snakeApp {
     }
     public static void main(String[] args) 
     {
-        snakeApp snakeApp = new snakeApp();
-        snakeApp.init();
+        snakeApp app = new snakeApp();
+        app.init();
     }
     
 }
