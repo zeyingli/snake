@@ -69,7 +69,7 @@ public class Grid
         Node preTail; // Save previous tail
         
         // Move snake based on current direction
-        preTail = snake.move(snakeDirection);
+       preTail = snake.move(snakeDirection);
         
         if (snake.getHead().getX()<=width && snake.getHead().getX()>=0 
        && snake.getHead().getY()<=height && snake.getHead().getY()>=0)
