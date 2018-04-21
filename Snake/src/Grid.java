@@ -8,6 +8,19 @@
  *
  * @author tim
  */
-public class Grid {
+/**
+ *
+ * @author GR10: Zeying, Tiancheng, Cheng, Jingyi
+ */
+public class Grid 
+{
+    private Snake snake;
+    private final int height , width;
+    private Node food;
     
+    private Direction snakeDirection = Direction.LEFT;  
+       
+    
+
+
 }
