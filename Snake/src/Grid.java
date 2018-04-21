@@ -24,7 +24,7 @@ public class Grid
     {
         this.width = h; 
         this.height= w; 
-       
+        food = createFood();
     }
     
     private Snake initializeSnake()
@@ -46,7 +46,23 @@ public class Grid
         return snake;
     }
 
-    
+     
+  private Node createFood()
+    {
+        int x, y;
+        
+        // Randomly populate coordinate for food
+        do {
+            x = (int) (Math.random() * 100);
+            y = (int) (Math.random() * 100);
+            
+            System.out.println(x);
+            System.out.println(y);
+        } while (x >= this.width || y >= this.height || snake.hasNode(new Node(x,y)));
+        
+        food = new Node(x, y);
+        return food;
+    }
 
 
 }
