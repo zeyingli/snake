@@ -1,5 +1,6 @@
 
 import java.awt.Graphics;
+import javax.swing.JPanel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,6 +15,16 @@ import java.awt.Graphics;
 public class SnakeView {
 
     private final Grid grid;
+    private static JPanel canvas;
+    
+    public void initial(){
+        canvas = new JPanel(){
+            @Override
+            public void component(Graphics graphics){
+                
+            }
+        };
+    }
 
     public SnakeView(Grid grid) {
         this.grid = grid;
