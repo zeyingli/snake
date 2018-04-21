@@ -42,6 +42,41 @@ public class Snake {
         return r;
     }
     
-   
+     // Get Head Node
+    public Node getHead()
+    {
+        return body.getFirst();
+    }
+    
+    // Add Tail Node
+    public Node addTail(Node area)
+    {
+        this.body.addLast(area);
+        return area;
+    }
+    
+    // Return body
+    public LinkedList<Node> getBody()
+    {
+        return body;
+    }
+    
+    // Determine if snake has node
+    public boolean hasNode(Node node)
+    {
+        Iterator<Node> iter = body.iterator();
+        Node n = new Node(0, 0);
+        
+        while(iter.hasNext())
+        {
+            n = iter.next();
+            if (n.getX() == node.getX() && n.getY() == node.getY())
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
+
 
