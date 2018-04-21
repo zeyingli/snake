@@ -7,18 +7,19 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author chengou
+ * @author Cheng Ou, Zeying Li, Tiancheng Zhang
  */
 public class SnakeView {
 
     private final Grid grid;
     private static JPanel canvas;
     
-    public void initial(){
-        canvas = new JPanel(){
+    public void init() {
+        canvas = new JPanel() {
             @Override
             public void paintComponent(Graphics graphics){
                 super.paintComponent(graphics);
+                drawGridBackground(graphics);
                 drawSnake(graphics, grid.getSnake());
                 drawFood(graphics, grid.getFood());
             }
@@ -58,7 +59,21 @@ public class SnakeView {
     }
     
     public static void showGameOverMessage() {
-        JOptionPane.showMessageDialog(null, "Game Over, You Died", "Game Over", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Game Over", "Game Over", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void drawGridBackground(Graphics graphics)
+    {
+        graphics.setColor(Color.gray);
+        for (int i = 0; i < 50; i++)
+        {
+            graphics.drawLine(0, i * Settings.DEFAULT_NODE_SIZE, this.grid.getWidth(), i * Settings.DEFAULT_NODE_SIZE);
+            
+        }
+        for (int i = 0; i < 50; i++)
+        {
+            graphics.drawLine(i * Settings.DEFAULT_NODE_SIZE, 0, i * Settings.DEFAULT_NODE_SIZE, this.grid.getHeight()); 
+        }
     }
     public void drawSquare(Graphics graphics, Node squareArea, Color color)
     {
