@@ -8,6 +8,20 @@
  *
  * @author chengou
  */
-public class Direction {
-    
+public enum Direction {
+    UP(0),
+    RIGHT(1),
+    DOWN(2),
+    LEFT(3);
+
+    private final int direction;
+
+    public int controlDirection() {
+        return direction;
+    }
+
+    Direction(int direction) {
+        this.direction = direction;
+    }
+
 }
