@@ -64,6 +64,15 @@ public class Grid
         return food;
     }
 
+      public boolean nextRound()
+    {
+        Node preTail; // Save previous tail
+        
+        // Move snake based on current direction
+      
+    }
+    
+
   public Snake getSnake()
   {
       return this.snake;
