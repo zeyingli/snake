@@ -58,6 +58,18 @@ public class SnakeView {
     }
     
     public static void showGameOverMessage() {
-        JOptionPane.showMessageDialog(null, "Game Over", "Game Over", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Game Over, You Died", "Game Over", JOptionPane.INFORMATION_MESSAGE);
+    }
+    public void drawSquare(Graphics graphics, Node squareArea, Color color)
+    {
+        graphics.setColor(color);
+        int size = Settings.DEFAULT_NODE_SIZE;
+        graphics.fillRect(squareArea.getX(), squareArea.getY(), size, size);
+    }
+    public void drawCircle(Graphics graphics, Node squareArea, Color color)
+    {
+        graphics.setColor(color);
+        int size = Settings.DEFAULT_NODE_SIZE;
+        graphics.fillOval(squareArea.getX(),squareArea.getY(),size,size);
     }
 }
