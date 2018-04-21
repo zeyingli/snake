@@ -1,12 +1,9 @@
-
+import java.awt.Color;
 import java.awt.Graphics;
-import javax.swing.JPanel;
+import java.util.Iterator;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,29 +17,47 @@ public class SnakeView {
     public void initial(){
         canvas = new JPanel(){
             @Override
-            public void component(Graphics graphics){
-                
+            public void paintComponent(Graphics graphics){
+                super.paintComponent(graphics);
+                drawSnake(graphics, grid.getSnake());
+                drawFood(graphics, grid.getFood());
             }
         };
     }
 
+    public static void draw() {
+        canvas.repaint();
+    }
+    
+    public JPanel getCanvas() {
+        return canvas;
+    }
+    
     public SnakeView(Grid grid) {
         this.grid = grid;
     }
 
-    public void draw(Graphics graphics) {
-        drawGridBackground(graphics);
-        drawSnake(graphics, grid.getSnake());
-        drawFood(graphics, grid.getFood());
-    }
-
     public void drawSnake(Graphics graphics, Snake snake) {
+        Iterator<Node> iter = snake.getBody().iterator();
+        
+        Node n = new Node(0, 0);
+        n = iter.next();
+        
+        this.drawSquare(graphics, n, Color.red);
+        
+        while(iter.hasNext())
+        {
+            n = iter.next();
+            this.drawSquare(graphics, n, Color.green);
+        }
+             
     }
 
     public void drawFood(Graphics graphics, Node squareArea) {
+        this.drawCircle(graphics, squareArea, Color.blue);
     }
-
-    public void drawGridBackground(Graphics graphics) {
+    
+    public static void showGameOverMessage() {
+        JOptionPane.showMessageDialog(null, "Game Over", "Game Over", JOptionPane.INFORMATION_MESSAGE);
     }
-
 }
