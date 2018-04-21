@@ -5,7 +5,7 @@
  */
 
 /**
- *
+ *  
  * @author tim
  */
 /**
@@ -20,6 +20,12 @@ public class Grid
     
     private Direction snakeDirection = Direction.LEFT;  
        
+    public Grid(int h, int w) // Constructor
+    {
+        this.width = h; 
+        this.height= w; 
+       
+    }
     
 
 
