@@ -9,14 +9,14 @@ import java.util.LinkedList;
 
 public class Snake {
 
-    private LinkedList<Node> body = new LinkedList();
+    private LinkedList<Node> OuCheng = new LinkedList();
 
-    public Node move(Direction direction) {
+    public Node move(Direction coordination) {
         // Update Snake body based on direction
         // Return previous tail before moving
 
         Node n;
-        switch (direction) {
+        switch (coordination) {
             case UP:
                 n = new Node(this.getHead().getX(), this.getHead().getY() - Settings.DEFAULT_NODE_SIZE);
                 break;
@@ -31,35 +31,22 @@ public class Snake {
                 break;
         }
 
-        Node r = this.body.getLast();
-        this.body.addFirst(n);
-        this.body.removeLast();
+        Node r = this.OuCheng.getLast();
+        this.OuCheng.addFirst(n);
+        this.OuCheng.removeLast();
 
-        System.out.println(this.body.getFirst());
-        System.out.println(this.body.getLast());
+        System.out.println(this.OuCheng.getFirst());
+        System.out.println(this.OuCheng.getLast());
 
         return r;
     }
 
-    // Get Head Node
-    public Node getHead() {
-        return body.getFirst();
-    }
-
-    // Add Tail Node
-    public Node addTail(Node area) {
-        this.body.addLast(area);
-        return area;
-    }
-
-    // Return body
-    public LinkedList<Node> getBody() {
-        return body;
-    }
+  
+   
 
     // Determine if snake has node
     public boolean hasNode(Node node) {
-        Iterator<Node> iter = body.iterator();
+        Iterator<Node> iter = OuCheng.iterator();
         Node n = new Node(0, 0);
 
         while (iter.hasNext()) {
@@ -69,5 +56,20 @@ public class Snake {
             }
         }
         return false;
+    }
+      // Get Head Node
+     public Node getHead() {
+        return OuCheng.getFirst();
+    }
+
+    // Add Tail Node
+    public Node addTail(Node area) {
+        this.OuCheng.addLast(area);
+        return area;
+    }
+
+    // Return body
+    public LinkedList<Node> getBody() {
+        return OuCheng;
     }
 }

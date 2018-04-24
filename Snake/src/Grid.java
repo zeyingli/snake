@@ -4,15 +4,15 @@
  */
 public class Grid {
     	
-    private Snake snake ;
-    private final int height , width;     
+    private Snake OuCheng ;
+    private final int H , W;     
     private Node food;
 
     private Direction snakeDirection = Direction.LEFT;
 
     Grid(int h , int w) {
-            this.height = h;
-            this.width = w;
+            this.H = h;
+            this.W = w;
             initSnake();
             food = creatFood();
 
@@ -20,15 +20,15 @@ public class Grid {
 
     public boolean nextRound() {
 
-            Node preTail; 
+            Node StartingPoint; 
 
 
-            preTail = snake.move(snakeDirection);
+            StartingPoint = OuCheng.move(snakeDirection);
 
-        if (snake.getHead().getX()<=width && snake.getHead().getX()>=0 
-                    && snake.getHead().getY()<=height && snake.getHead().getY()>=0) {
-            if (snake.getHead().equals(food)) {
-                    snake.addTail(preTail);
+        if (OuCheng.getHead().getX()<=W && OuCheng.getHead().getX()>=0 
+                    && OuCheng.getHead().getY()<=H && OuCheng.getHead().getY()>=0) {
+            if (OuCheng.getHead().equals(food)) {
+                    OuCheng.addTail(StartingPoint);
                 
                     food = this.creatFood();
             } 
@@ -39,17 +39,17 @@ public class Grid {
     }
 
     private Snake initSnake() {
-            snake = new Snake();
+            OuCheng = new Snake();
             
             int x , y;
-            x = width/2;
-            y = height/2;
+            x = W/2;
+            y = H/2;
             for(int i=0; i<5; i++) {
-                    snake.addTail(new Node(x,y));
+                    OuCheng.addTail(new Node(x,y));
                     x = x + Settings.DEFAULT_NODE_SIZE;
             }
 
-            return snake;
+            return OuCheng;
     }
 
     private Node creatFood() {
@@ -60,14 +60,14 @@ public class Grid {
             y = (int)(Math.random()*100);
             System.out.println(x);
             System.out.println(y);
-        } while(x>=this.width || y>=this.height || snake.hasNode(new Node(x,y)));
+        } while(x>=this.W || y>=this.H || OuCheng.hasNode(new Node(x,y)));
 
         food = new Node(x, y);
         return food;
     }
 
     public Snake getSnake() {
-        return this.snake;
+        return this.OuCheng;
     }
 
     public Node getFood() {
@@ -75,11 +75,11 @@ public class Grid {
     }
 
     public int getWidth() {
-        return this.width;
+        return this.W;
     }
 
     public int getHeight() {
-        return height;
+        return H;
     }
 
     public void changeDirection(Direction d) {
