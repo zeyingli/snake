@@ -11,12 +11,12 @@ public class Snake {
 
     private LinkedList<Node> OuCheng = new LinkedList();
 
-    public Node move(Direction coordination) {
+    public Node move(Direction coordinations) {
         // Update Snake body based on direction
         // Return previous tail before moving
 
         Node n;
-        switch (coordination) {
+        switch (coordinations) {
             case UP:
                 n = new Node(this.getHead().getX(), this.getHead().getY() - Settings.DEFAULT_NODE_SIZE);
                 break;
