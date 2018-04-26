@@ -26,7 +26,7 @@ public class snakeApp {
         
         snakeView.draw();
         
-        window.setResizable(false);
+        window.setResizable(true);
         
         window.addKeyListener((KeyListener)snakeController);
         new Thread(snakeController).start();
